@@ -214,9 +214,11 @@ these files with the use of the `try_files` command, illustrated in the
 * `root /www/data;` tells NGINX to serve static files from the `/www/data` folder
 * `try_files $uri /index.html;` tells NGINX to try to find a file with the
     matching URI, otherwise serve the `/index.html` file. This is the default
-    common to single page applications.
+    common to single page applications
 * `index index.html index.htm;` tells NGINX to serve the `index.html` page when
     users visit the root path (`/`)
+* `include mime.types;` tells NGINX include the standard mime type headers
+  defined in `/etc/nginx/mime.types` of the NGINX image
 
 ### Proxying a remote backend API
 
