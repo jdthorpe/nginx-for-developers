@@ -11,11 +11,11 @@ function App() {
         var res;
         try {
             if (method === "get") {
-                res = await axios.get("./api/echo", {
+                res = await axios.get("./api/send-message", {
                     params: { message: message },
                 });
             } else {
-                res = await axios.post("./api/echo", {
+                res = await axios.post("./api/send-message", {
                     message: message,
                 });
             }
@@ -39,7 +39,8 @@ function App() {
             ></textarea>
             <p>
                 Send the message to the backend in a <code>GET</code> or{" "}
-                <code>POST</code> request at the <code>/api/echo</code> endpoint
+                <code>POST</code> request at the <code>/api/send-message</code>{" "}
+                endpoint
             </p>
             <button onClick={() => getResults("get")}>Get</button>
             <button
