@@ -222,7 +222,7 @@ these files with the use of the `try_files` command, illustrated in the
 
 ### Proxying a remote backend API
 
-If you open the `nginx-dev-server-remote-api.conf` file, you'll notice two
+In the `nginx-dev-server-remote-api.conf` file, there are two
 changes from the local-api config file. First, I've replaced the `location /api {..}`
 block with a literal reference to the remote server, and I've removed the
 `upstream api` block as follows:
@@ -241,9 +241,11 @@ location block fixed that.
 
 ### Proxying a backend server over https
 
-Your backend server may require a secure (https) connection. NGINX can easily
-accommodate this by setting the protocol to `https` and adding
-`proxy_ssl_server_name on;` to the location block like this:
+If the backend server requires a secure (https) connection, NGINX can easily
+handle this requirement, and an example is provided in the
+`nginx-dev-server-remote-api-ssl.conf` config file. This is accomplished by
+setting the protocol in the `proxy_pass` directive to `https` and adding the
+`proxy_ssl_server_name on;` directive to the location context like this:
 
 ```conf
 location /api {
@@ -254,7 +256,7 @@ location /api {
 
 Lastly, I've read that with this simple configuration NGINX does not validate the SSL
 certificate, so this is not a solution you want to use on an untrusted
-network. NGINX can be [configured to validate upstream
+network such as an aiport or coffeshop. NGINX can be [configured to validate upstream
 certificates](https://docs.nginx.com/nginx/admin-guide/security-controls/securing-http-traffic-upstream/#configuring-upstream-servers),
 though a bit more effort is required.
 
